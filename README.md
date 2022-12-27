@@ -17,6 +17,6 @@ This iOS application contains a UI that collects user info (first name, last nam
 - [X] Introduce yourself button shows alert box with an introduciton and dismiss button
 
 ## Optional Features
--[ ] User can tap a button to change the color of the background view
--[ ] User can select on additional buttons that provide more info about the user. Example: more textfields, a different alert box, etc.
--[ ] Any stylistic changes that are not default options (Comment this here)
+- [ ] User can tap a button to change the color of the background view
+- [ ] User can select on additional buttons that provide more info about the user. Example: more textfields, a different alert box, etc.
+- [ ] Any stylistic changes that are not default options (Comment this here)
