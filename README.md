@@ -9,12 +9,12 @@ This iOS application contains a UI that collects user info (first name, last nam
 ![Video Walkthrough](https://user-images.githubusercontent.com/89226977/209590822-a0dbd7b8-da04-43ff-81c8-96bf6be26e33.gif)
 
 ## Required Features
--[X] App displays an image of a school's logo
--[X] App has three textfields for first, last, and school names
--[X] App has a segmented control that changes student year
--[X] Number of pet matches label is increased/decreased by stepper
--[X] Switch makes a statement about wanting more pets or not(true/false)
--[X] Introduce yourself button shows alert box with an introduciton and dismiss button
+- [X] App displays an image of a school's logo
+- [X] App has three textfields for first, last, and school names
+- [X] App has a segmented control that changes student year
+- [X] Number of pet matches label is increased/decreased by stepper
+- [X] Switch makes a statement about wanting more pets or not(true/false)
+- [X] Introduce yourself button shows alert box with an introduciton and dismiss button
 
 ## Optional Features
 -[ ] User can tap a button to change the color of the background view
