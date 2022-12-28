@@ -22,10 +22,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var majorDropDownField: UITextField!
     @IBOutlet weak var majorTitle: UILabel!
     @IBOutlet weak var saveButton: UIButton!
-    
-    
+    @IBOutlet weak var backgroundColor: UITabBarItem!
+    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var hobbiesTextField: UITextField!
+    @IBOutlet weak var hobbiesLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     let defaults = UserDefaults.standard
-    let dropDown = DropDown()
+    let majorDropDown = DropDown()
+    let colorDropDown = DropDown()
     
     struct keys {
         static let firstName = "firstName"
@@ -36,11 +40,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         static let major = "major"
         static let pets = "pets"
         static let morepets = "morepets"
+        static let hobbies = "hobbies"
     }
    
     // Displays drop down options
     @IBAction func showMajorOptions(_ sender: UIButton) {
-        dropDown.show()
+        majorDropDown.show()
+    }
+    
+    @IBAction func showColorOptions(_ sender: UIButton) {
+        colorDropDown.show()
     }
     
     @IBAction func stepperDidChange(_ sender: UIStepper) {
@@ -66,6 +75,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         present(alertController, animated: true, completion: nil)
      }
     
+    
+    @IBAction func moreDidTapped(_ sender: UIButton) {
+        let hobby = "When I am not in school, I have some hobbies that help me relax: \(hobbiesTextField.text!)"
+        
+        let alertController = UIAlertController(title: "My Hobbies", message: hobby, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Fun!", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
+
     //Remove keyboard once return is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
@@ -75,12 +94,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             genderTextField.becomeFirstResponder()
         case genderTextField:
             schoolNameTextField.becomeFirstResponder()
+        case schoolNameTextField:
+            hobbiesTextField.becomeFirstResponder()
         default:
             textField.resignFirstResponder()
         }
         return false
     }
-    
+
     // Save entered information when save button is clicked.
     @IBAction func saveButton(_ sender: Any) {
         saveUserInfo()
@@ -95,8 +116,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         defaults.set(schoolNameTextField.text, forKey: keys.school)
         defaults.set(yearSegmentedControl.selectedSegmentIndex, forKey: keys.year)
         defaults.set(majorTitle.text, forKey: keys.major)
+        defaults.set(hobbiesTextField.text, forKey: keys.hobbies)
         defaults.set(numberOfPetsLabel.text, forKey: keys.pets)
         defaults.set(morePetsSwitch.isOn, forKey: keys.morepets)
+          
     }
     
     
@@ -108,6 +131,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let school = defaults.value(forKey: keys.school) as? String ?? ""
         let year = defaults.value(forKey: keys.year) as? Int ?? 0
         let major = defaults.value(forKey: keys.major) as? String ?? ""
+        let hobbies = defaults.value(forKey: keys.hobbies) as? String ?? ""
         let pets = defaults.value(forKey: keys.pets) as? String ?? "0"
         let morepets = defaults.value(forKey: keys.morepets) as? Bool ?? false
         
@@ -118,20 +142,43 @@ class ViewController: UIViewController, UITextFieldDelegate {
         yearSegmentedControl.selectedSegmentIndex = year
         majorTitle.text = major
         majorTitle.alpha = 1
+        hobbiesTextField.text = hobbies
         numberOfPetsLabel.text = pets
         morePetsSwitch.isOn = morepets
     }
     
+    //Change background color
+    func changeBackgroundColor(color: String){
+        switch color {
+        case "red":
+            self.view.backgroundColor = UIColor.red
+        case "gray":
+            self.view.backgroundColor = UIColor.gray
+        case "green":
+            self.view.backgroundColor = UIColor.green
+        case "white":
+            self.view.backgroundColor = UIColor.white
+        default:
+            self.view.backgroundColor = UIColor.white
+        }
+                
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         majorTitle.text = "Select Major" //Load dropdown options
-        dropDown.anchorView = majorDropDownField
+        majorDropDown.anchorView = majorDropDownField
         let majorArray = ["Business", "Computer Science", "Engineering", "Nursing", "Mathematics", "Chemistry"]
-        dropDown.dataSource = majorArray
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+        majorDropDown.dataSource = majorArray
+        majorDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.majorTitle.text = majorArray[index]
             majorTitle.alpha = 1
+        }
+        colorDropDown.anchorView = colorButton
+        let colorArray = ["green", "gray", "red", "white"]
+        colorDropDown.dataSource = colorArray
+        colorDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            changeBackgroundColor(color: colorArray[index])
         }
         firstNameTextField.delegate = self //set delegate to textfile
         lastNameTextField.delegate = self //set delegate to textfile
