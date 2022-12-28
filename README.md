@@ -20,11 +20,11 @@ This iOS application contains a UI that collects user info (first name, last nam
 - [X] User can tap a button to change the color of the background view
 - [X] User can select on additional buttons that provide more info about the user. Example: more textfields, a different alert box, etc.
 - [X] Stylistic Changes: 
-      * DropDown Menu for "Major" selection
-      * Tab bar with bar item with change background color
-      * Save information and to learn more
 <ul>
-<li>`one</li>
-<li>two`</li>
+<li>`DropDown Menu for "Major" selection</li>
+<li>Tab bar with bar item to change background color`</li>
+<li>`Bar item to save progress</li> 
+<li>`Bar item to learn more</li> 
+   
 </ul>
       
