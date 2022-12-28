@@ -6,7 +6,8 @@ This iOS application contains a UI that collects user info (first name, last nam
 
 
 ## App Walk-though
-![Video Walkthrough](https://user-images.githubusercontent.com/89226977/209590822-a0dbd7b8-da04-43ff-81c8-96bf6be26e33.gif)
+![Features Demo](https://user-images.githubusercontent.com/89226977/209740439-9e773517-dab9-4d5c-8534-0227c0bc6126.gif)
+
 
 ## Required Features
 - [X] App displays an image of a school's logo
