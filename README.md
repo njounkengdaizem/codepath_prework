@@ -23,4 +23,8 @@ This iOS application contains a UI that collects user info (first name, last nam
       * DropDown Menu for "Major" selection
       * Tab bar with bar item with change background color
       * Save information and to learn more
+<ul>
+<li>`one</li>
+<li>two`</li>
+</ul>
       
